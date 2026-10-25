@@ -1,0 +1,147 @@
+/* ===== 净澈 CleanSpace · 液态玻璃 UI Token（文档第六章）===== */
+:root {
+  --bg-0: #070b1c;
+  --bg-1: #101740;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-strong: rgba(255, 255, 255, 0.11);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  --blur: 28px;
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --text-1: #f2f5ff;
+  --text-2: rgba(242, 245, 255, 0.68);
+  --text-3: rgba(242, 245, 0.45);
+  --primary: #6ea8ff;
+  --danger: #ff5d6c;
+  --ok: #37d399;
+  --shadow-glass: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', 'Microsoft YaHei', system-ui, sans-serif;
+  color: var(--text-1);
+  overflow: hidden;
+  /* 深色极光渐变底 */
+  background:
+    radial-gradient(1200px 700px at 12% -10%, rgba(110, 168, 255, 0.16), transparent 55%),
+    radial-gradient(900px 600px at 95% 8%, rgba(94, 226, 205, 0.10), transparent 50%),
+    radial-gradient(1000px 800px at 55% 115%, rgba(158, 122, 255, 0.12), transparent 55%),
+    linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  background-attachment: fixed;
+}
+
+/* ---------- 玻璃卡片 ---------- */
+.glass {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-glass);
+  overflow: hidden;
+}
+/* 顶部 1px 高光 */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-highlight) 30%, var(--glass-highlight) 70%, transparent);
+  pointer-events: none;
+}
+
+.glass-inner {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 0.25);
+  background-clip: padding-box;
+  border: 0;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- 通用控件 ---------- */
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-1);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.cs-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+.cs-btn.primary {
+  border-color: rgba(110, 168, 255, 0.55);
+  background: linear-gradient(135deg, rgba(110, 168, 255, 0.30), rgba(110, 168, 159, 0.18));
+}
+.cs-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(110, 168, 255, 0.42), rgba(110, 168, 255, 0.24));
+}
+.cs-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cs-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-2);
+}
+
+/* 淡入动画 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.35s ease both;
+}

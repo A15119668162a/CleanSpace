@@ -1,0 +1,45 @@
+{
+  "name": "cleanspace",
+  "productName": "净澈 CleanSpace",
+  "version": "4.2.9",
+  "description": "看得见、删不错、能反悔的 Windows 空间清理与提速工具",
+  "author": "CleanSpace",
+  "private": true,
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite dev",
+    "build": "electron-vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "dist": "electron-vite build && electron-builder --win",
+    "dist:dir": "electron-vite build && electron-builder --dir",
+    "smoke": "node scripts/smoke.js",
+    "pack:test": "node scripts/pack-test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "jimp": "^0.22.12",
+    "@jimp/core": "^0.22.12",
+    "@jimp/custom": "^0.22.12",
+    "@jimp/plugins": "^0.22.12",
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "@electron-toolkit/utils": "^3.0.0",
+    "@electron/rebuild": "^4.0.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.10.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "echarts": "^6.1.0",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.0"
+  }
+}

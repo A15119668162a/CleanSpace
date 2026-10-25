@@ -1,0 +1,38 @@
+appId: cn.cleanspace.app
+productName: 净澈 CleanSpace
+copyright: CleanSpace
+directories:
+  output: dist
+  buildResources: build
+npmRebuild: false
+files:
+  - out/**
+  - node_modules/@jimp/**
+  - node_modules/jimp/**
+  - node_modules/electron-updater/**
+  - node_modules/@jimp/**
+  - node_modules/jimp/**
+  - node_modules/electron-updater/**
+  - "!**/*.map"
+asarUnpack:
+  - "**/*.node"
+  - "**/scanner/**"
+  - "**/media/**"
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: zip
+      arch: [x64]
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  # v4.2.9: OTA artifact english name for latest.yml consistency
+  artifactName: cleanspace-setup-${version}.${ext}
+# v4.2.9: explicit generic publish (fix app-update.yml github default)
+publish:
+  provider: generic
+  url: https://cbxs.top/update/cleanspace/
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
